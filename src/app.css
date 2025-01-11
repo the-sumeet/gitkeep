@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.EasyMDEContainer {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Adjust the editor to use the full width */
+.editor-toolbar,
+.CodeMirror,
+.editor-preview {
+    width: 100% !important;
+}
+
+.CodeMirror {
+    height: 100% !important;
+}
+
+/* Optional: Make sure the footer doesn't reduce the width of the text area */
+.editor-statusbar {
+    width: auto !important;
+}
