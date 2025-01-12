@@ -121,7 +121,6 @@
 	{:else}
 		<div class=" lg:px-20 md:px-8">
 			<Breadcrumb paths={getBreadcrumbDirs()} />
-			<hr class="mt-2 w-full" />
 		</div>
 		<div class="mt-2 flex flex-wrap lg:px-20 md:px-8 mx-auto gap-y-2">
 			{#if repoContent instanceof Array}
