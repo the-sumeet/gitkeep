@@ -70,7 +70,7 @@
 						action: function customFunction(editor) {
 							selectedFile = null;
 						},
-						className: 'bi bi-x-square',
+						className: 'text-red-700 font-bold bi bi-x-square',
 						title: 'Close'
 					}
 				]
@@ -89,7 +89,6 @@
 	}
 
 	function getBreadcrumbDirs() {
-		console.log(page.url.pathname);
 		if (page.url.pathname === "/list") {
 			return [];
 		} 
@@ -138,7 +137,7 @@
 									selectedFile = file;
 								}
 							}}
-							class="px-4 py-5 h-48 bg-white border hover:shadow sm:rounded-lg text-sm sm:p-6 flex flex-col"
+							class="px-4 py-5 h-48 bg-white border transition-shadow duration-300 hover:shadow-md sm:rounded-lg text-sm sm:p-6 flex flex-col"
 						>
 							<div class="overflow-hidden">
 								<p class="font-bold text-ellipsis flex gap-1 items-center">
@@ -174,10 +173,9 @@
 		
 		<div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
-
-		<div class="flex flex-col justify-center fixed inset-0 z-10 w-screen h-screen overflow-y-auto ">
+		<div class=" m-2 flex flex-col justify-center fixed inset-0 z-10 w-screen h-screen overflow-y-hidden">
 		<!-- <div class="z-10 top-0 bottom-0 absolute grow flex flex-col flex-auto w-full"> -->
-			<div class="shadow h-full m-2 sm:m-10 md:mx-16 lg:mx-32 bg-white border  rounded-md">
+			<div class="shadow h-full m-2 sm:m-10 md:mx-16 lg:mx-32 bg-white border  rounded-md overflow-y-scroll">
 				<textarea></textarea>
 			</div>
 		</div>

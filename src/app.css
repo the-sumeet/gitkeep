@@ -13,3 +13,12 @@
 .CodeMirror {
     flex: 1 1 0% !important;
 }
+
+.EasyMDEContainer .CodeMirror {
+    border: none !important;
+}
+
+.editor-toolbar {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+}
