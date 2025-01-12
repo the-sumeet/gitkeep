@@ -16,7 +16,6 @@
 	$effect(() => {
 		if (!data.error) {
 			repoContent = data.files;
-			// syncContent();
 		}
 	});
 
@@ -86,9 +85,15 @@
 	});
 
 	async function openDir(dir: string) {
-		const newUrl = new URL(page.url);
-		newUrl.searchParams.set('path', dir);
-		goto(newUrl);
+		goto(`/list/${dir}`);
+	}
+
+	function getBreadcrumbDirs() {
+		console.log(page.url.pathname);
+		if (page.url.pathname === "/list") {
+			return [];
+		} 
+		return page.url.pathname.replace("/list/", "").split("/");
 	}
 
 	async function getFileContent(file: any) {
@@ -115,7 +120,7 @@
 		</div>
 	{:else}
 		<div class=" lg:px-20 md:px-8">
-			<Breadcrumb paths={(page.url.searchParams.get('path') || '').split('/')} />
+			<Breadcrumb paths={getBreadcrumbDirs()} />
 			<hr class="mt-2 w-full" />
 		</div>
 		<div class="mt-2 flex flex-wrap lg:px-20 md:px-8 mx-auto gap-y-2">
