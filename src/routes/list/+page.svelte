@@ -49,12 +49,17 @@
 					'|',
 					'undo',
 					'redo',
-					"|",
+					'|',
 					'guide',
 					{
 						name: 'save',
 						action: function customFunction(editor) {
-							putContent(fetch, selectedFile.path, b64EncodeUnicode(editorContent), selectedFile.sha).then(() => {
+							putContent(
+								fetch,
+								selectedFile.path,
+								b64EncodeUnicode(editorContent),
+								selectedFile.sha
+							).then(() => {
 								// selectedFile = null;
 							});
 						},
@@ -68,8 +73,7 @@
 						},
 						className: 'bi bi-x-square',
 						title: 'Close'
-					},
-					
+					}
 				]
 			});
 			getFileContent(selectedFile).then((content) => {
@@ -78,7 +82,6 @@
 			easyMDE.codemirror.on('change', () => {
 				editorContent = easyMDE.value();
 			});
-		
 		}
 	});
 
@@ -95,7 +98,7 @@
 
 		if (!storedFile || storedFile.sha != file.sha) {
 			const res = await getContent(fetch, file.path);
-			const { html_url, sha, content } = (res.files as any);
+			const { html_url, sha, content } = res.files as any;
 			localStorage.setItem(html_url, JSON.stringify({ sha, content }));
 
 			return content;
@@ -103,7 +106,6 @@
 
 		return storedFile.content;
 	}
-
 </script>
 
 <div class="relative overflow-y-scroll flex-1">
@@ -165,8 +167,13 @@
 
 	<!--	Preview-->
 	{#if selectedFile}
-		<div class="z-10 top-0 bottom-0 absolute grow flex flex-col flex-auto w-full">
-			<div class="flex-1 shadow bg-white border m-6 rounded-md">
+		
+		<div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+
+		<div class="flex flex-col justify-center fixed inset-0 z-10 w-screen h-screen overflow-y-auto ">
+		<!-- <div class="z-10 top-0 bottom-0 absolute grow flex flex-col flex-auto w-full"> -->
+			<div class="shadow h-full m-2 sm:m-10 md:mx-16 lg:mx-32 bg-white border  rounded-md">
 				<textarea></textarea>
 			</div>
 		</div>
