@@ -19,7 +19,7 @@
     <Navbar />
     
     <div class="flex-1 flex overflow-y-hidden">
-        <Sidebar />
+        <!-- <Sidebar /> -->
         {@render children()}
     </div>
 </div>
