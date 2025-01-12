@@ -113,7 +113,7 @@
 	}
 </script>
 
-<div class="relative overflow-y-scroll flex-1">
+<div class="relative overflow-y-scroll flex-1 mt-2">
 	{#if data.error}
 		<div class="p-2">
 			<Alert title={data.error} type={'error'} />
