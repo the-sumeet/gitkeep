@@ -124,7 +124,7 @@
 		<div class="mt-2 flex flex-wrap lg:px-20 md:px-8 mx-auto gap-y-2">
 			{#if repoContent instanceof Array}
 				{#each repoContent as file}
-					<div class=" p-1 sm:w-1/2 md:w-1/3 overflow-hidden">
+					<div class="p-1 w-full sm:w-1/2 md:w-1/3  overflow-hidden">
 						<!-- Card with shadow -->
 						<!-- Be sure to use this with a layout container that is full-width on mobile -->
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -173,7 +173,7 @@
 		
 		<div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
-		<div class=" m-2 flex flex-col justify-center fixed inset-0 z-10 w-screen h-screen overflow-y-hidden">
+		<div class="flex flex-col justify-center fixed inset-0 z-10 w-screen h-screen overflow-y-hidden">
 		<!-- <div class="z-10 top-0 bottom-0 absolute grow flex flex-col flex-auto w-full"> -->
 			<div class="shadow h-full m-2 sm:m-10 md:mx-16 lg:mx-32 bg-white border  rounded-md overflow-y-scroll">
 				<textarea></textarea>
