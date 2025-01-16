@@ -5,11 +5,7 @@ import { Octokit, App } from "octokit";
 export const getUser = async (token: string) => {
     const octokit = new Octokit({ auth: token });
     
-    try {
-        return (await octokit.rest.users.getAuthenticated()).data;
-    } catch (error: any) {
-        throw new Error(`Error fetching user: ${error.message}`);
-    }
+    return (await octokit.rest.users.getAuthenticated()).data;
 
 }
 
