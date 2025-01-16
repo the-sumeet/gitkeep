@@ -4,6 +4,7 @@ import { ObjectId } from 'mongodb';
 import { connectToDb } from '$lib/db';
 import { json } from '@sveltejs/kit';
 
+import { getUser } from '$lib/github';
 
 connectToDb()
     .then((): void => {
@@ -25,7 +26,12 @@ export async function handle({ event, resolve }) {
             return json({msg: "Unauthorized"}, { status: 401 });
         }
     } else {
-        (event.locals as App.Locals).session = session;
+        try {
+                await getUser(session.token) as App.GitHubUser;
+                (event.locals as App.Locals).session = session;
+            } catch (error: any) {
+                console.log("Error getting user from token, can't add to locals. ", error.message);
+            }
     }
     return await resolve(event);
 }
