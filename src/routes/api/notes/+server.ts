@@ -13,12 +13,8 @@ export async function GET({locals, url}) {
         const files = (await octokit.rest.repos.getContent({owner: userSession?.login!, repo: userSession!.repo, path })).data;
         return json({ files });
     } catch (error: any) {
-        if (error.status == 404) {
-            return json({ "error": `Path '${path}' in repository '${userSession!.repo}' not found for user '${userSession?.login}'`}, { status: 404 });
-        } else {
-            console.error(`Error fetching repository ${'notes'} for user ${userSession?.login}: ${error}`);
-            return json({ "error": `Path '${path}' in repository '${userSession!.repo}' not found for user '${userSession?.login}'`}, { status: 500 });
-        }
+        console.error(`Error fetching repository '${userSession!.repo}', path '${path}', for user '${userSession?.login}'. ${error.message}. ${error.status}`);
+        return json({"error": error.message}, { status: error.status });
     }
 }
 
