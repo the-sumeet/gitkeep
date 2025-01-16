@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Input from '$lib/components/Input.svelte';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	let { data } = $props();
 
 	const repos = data.repos;
@@ -19,7 +18,7 @@
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ repo: selectedRepoName}),
-        }).then(async (res) => {
+        }).then((res) => {
 			if (res.ok) {
 				goto('/list');
 			} else if (res.status == 401) {
@@ -77,7 +76,7 @@
 					</div>
                 {/if}
 
-                {#if repos && repos.length > 0}
+                {#if repos && repos.length > 0 && selectedRepoName}
                 <div>
 					<button
 						onclick={setRepo}
