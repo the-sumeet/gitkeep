@@ -14,6 +14,9 @@ declare global {
 		type Repositories = RestEndpointMethodTypes["repos"]["listForAuthenticatedUser"]["response"]['data'];
 		type RepoContent = RestEndpointMethodTypes["repos"]["getContent"]["response"]['data'];
 
+		type ErrorResponse = {
+			error: string;
+		}
 		type Session = App.GitHubUser & {
 			_id?: string;
 			token?: string; // GitHub token
