@@ -4,27 +4,33 @@
 	let inputToken = $state('');
 	let selectedRepoName = $state('');
 
-    let user: App.GitHubUser | null = $state(null);
-    let repositories: App.Repositories = $state([]);
-    
+	let user: App.GitHubUser | null = $state(null);
+	let repositories: App.Repositories = $state([]);
+
 	let error = $state('');
 	let fetching = $state(false);
 
-    function setCookieAndRedirect() {
-        // localStorage.setItem('storageRepo', selectedRepoName);
-        fetch('/api/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ token: inputToken, repo: selectedRepoName }),
-        }).then(async (res) => {
-			const response: App.Session = await res.json();
-			localStorage.value = JSON.stringify(response);
-            goto('/list');
-        });
-        
-    }
+	function setCookieAndRedirect() {
+		fetching = true;
+		// localStorage.setItem('storageRepo', selectedRepoName);
+		fetch('/api/token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ token: inputToken, repo: selectedRepoName })
+		}).then(async (res) => {
+			const response: App.Session | App.ErrorResponse = await res.json();
+			if (!res.ok) {
+				error = (response as unknown as App.ErrorResponse).error;
+			} else {
+				localStorage.value = JSON.stringify(response);
+				goto('/list');
+			}
+		}).finally(() => {
+			fetching = false;
+		});
+	}
 </script>
 
 <!--
@@ -51,7 +57,7 @@
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
 		<div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
 			<form class="space-y-6">
-				<Input label="Access Token" {error} type="text" bind:input={inputToken} />
+				<Input label="Access Token" {error} type="password" bind:input={inputToken} />
 
 				<div>
 					<button
@@ -66,39 +72,41 @@
 					</button>
 				</div>
 
-                {#if user}
-				{#if repositories.length > 0}
-					<div class="sm:col-span-3">
-						<label for="country" class="block text-sm/6 font-medium text-gray-900"
-							>Hello <span class="font-bold">knjjn</span>, please select a repository to use as storage.</label
-						>
-						<div class="mt-2 grid grid-cols-1">
-							<select
-                                bind:value={selectedRepoName}
-								class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-							>   
-                                <option value=''>Select Repository</option>
-                                {#each repositories as repo}
-                                    <option value={repo.name}>{repo.name}</option>
-                                {/each}
-							</select>
-                            <i class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 bi bi-chevron-down"></i>
-						
+				{#if user}
+					{#if repositories.length > 0}
+						<div class="sm:col-span-3">
+							<label for="country" class="block text-sm/6 font-medium text-gray-900"
+								>Hello <span class="font-bold">knjjn</span>, please select a repository to use as
+								storage.</label
+							>
+							<div class="mt-2 grid grid-cols-1">
+								<select
+									bind:value={selectedRepoName}
+									class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+								>
+									<option value="">Select Repository</option>
+									{#each repositories as repo}
+										<option value={repo.name}>{repo.name}</option>
+									{/each}
+								</select>
+								<i
+									class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 bi bi-chevron-down"
+								></i>
+							</div>
 						</div>
+					{/if}
+				{/if}
+
+				{#if user && selectedRepoName && repositories.length > 0}
+					<div>
+						<button
+							onclick={setCookieAndRedirect}
+							class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+						>
+							Use '{selectedRepoName}' for Storage
+						</button>
 					</div>
 				{/if}
-                {/if}
-
-                {#if user && selectedRepoName && repositories.length > 0}
-                <div>
-					<button
-						onclick={setCookieAndRedirect}
-						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-					>
-                    Use '{selectedRepoName}' for Storage
-					</button>
-				</div>
-                {/if}
 			</form>
 		</div>
 	</div>
