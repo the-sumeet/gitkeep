@@ -17,8 +17,5 @@ export const load: PageLoad = async ({ url, fetch, parent }) => {
         }
     }
 
-    return {
-        ...await getContent(fetch, path),
-        path
-    }
+    return await getContent(fetch, path)
 };
