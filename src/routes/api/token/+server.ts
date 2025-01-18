@@ -6,18 +6,27 @@ import { COOKIE_SESSION_KEY_NAME } from '$lib/constants.js';
 export async function POST({ request, cookies }) {
 
     let { token, repo } = await request.json();
-    
+
     let user: App.GitHubUser | null = null;
 
     try {
         user = await getUser(token) as App.GitHubUser;
-    } catch (error) {
-        console.log(error);
-        return json({ error: 'Invalid token' }, { status: 401 });
+    } catch (error: any) {
+        console.log("error getting user from token:", error);
+        if (error.status < 500) {
+            {
+                if (error.status === 401) {
+                    return json({ error: 'Invalid Token' }, { status: 401 });
+                } else {
+                    return json({ error: error.message }, { status: error.status });
+                }
+            }
+        }
+        return json({ error: 'Internal Server Rrror' }, { status: 500 });
     }
 
     if (!user) {
-        return json({ error: 'Invalid token' }, { status: 401 });
+        return json({ error: 'Invalid Token' }, { status: 401 });
     }
 
     const toInsert = {
@@ -26,7 +35,7 @@ export async function POST({ request, cookies }) {
         ...user
     }
     const res = await sessions.insertOne(toInsert);
-    
+
     // Set http only cookie
     delete toInsert.token
     cookies.set(COOKIE_SESSION_KEY_NAME, res.insertedId.toString(), {
