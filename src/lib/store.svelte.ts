@@ -1,8 +1,7 @@
 
-import { browser } from "$app/environment";
-
-export const state: App.AppState = $state({
+export const appState: App.AppState = $state({
     token: '',
-    login: '',
+    modal: null,
+    actions: null
 });
 
