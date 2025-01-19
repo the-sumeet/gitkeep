@@ -242,7 +242,7 @@
 				<p
 					class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-balance"
 				>
-					Everything you need in notes app
+					Everything you need in note taking app
 				</p>
 				<!--				<p class="mt-6 text-pretty text-lg/8 text-gray-600">-->
 				<!--					Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas-->
