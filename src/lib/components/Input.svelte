@@ -1,5 +1,5 @@
 <script>
-    let {input, onchange, error = 'dfe', label = '', type='text' } = $props();
+    let {input = $bindable(), onchange, error = 'dfe', label = '', type='text' } = $props();
 </script>
 
 <div>
