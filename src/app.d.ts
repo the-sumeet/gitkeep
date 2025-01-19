@@ -38,6 +38,29 @@ declare global {
 			session?: Session;
 		}
 
+		interface Button {
+			text: string
+			type: "primary" | "secondary"
+			onclick: () => void
+		}
+
+		interface Input {
+			input
+			label: string
+			error: string
+			type: "text" | "password"
+			onchange: (value) => void
+
+		}
+
+		interface Modal {
+			title: string
+			message: string
+			type: 'success' | 'error' | 'warning' | 'info'
+			buttons?: Button[]
+			input?: Input
+		}
+
 	}
 }
 
