@@ -56,7 +56,7 @@ declare global {
 		interface Modal {
 			title: string
 			message?: string
-			type: 'success' | 'error' | 'warning' | 'info'
+			type?: 'success' | 'error' | 'warning' | 'info'
 			buttons?: Button[]
 			input?: Input
 		}
