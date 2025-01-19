@@ -196,13 +196,15 @@
 								}}
 								class="p-3 py-2 h-64 bg-white border transition-shadow duration-300 hover:shadow-md sm:rounded-lg text-sm flex flex-col justify-between"
 							>
-								<div class="overflow-hidden">
+								<div class="overflow-y-hidden">
 									<!-- Card title -->
-									<p class="font-bold text-ellipsis flex gap-1 items-center">
+									<p class="font-bold flex gap-1 items-center">
 										{#if file.type === 'dir'}
 											<i class="text-xl bi bi-folder"></i>
 										{/if}
-										{file.name}
+										<span class="truncate">
+											{file.name}
+										</span>
 									</p>
 
 									<!-- Card content -->
