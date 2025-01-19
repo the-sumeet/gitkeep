@@ -19,7 +19,7 @@ export const getContent = async (fetch: any, path: string)=> {
 
 }
 
-export const putContent = async (fetch: any, path: string, content: string, sha: string) => {
+export const putContent = async (fetch: any, path: string, content: string, sha: string | null) => {
     console.log(`Updating ${path}  with sha ${sha} and content ${content}`);
     const response = await fetch(`/api/notes?path=${path}`, {
         method: 'PUT',
