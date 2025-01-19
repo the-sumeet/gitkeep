@@ -21,6 +21,7 @@
 	$effect(() => {
 		if (selectedFile) {
 			const easyMDE = new EasyMDE({
+				spellChecker: false,
 				toolbar: [
 					'bold',
 					'italic',
