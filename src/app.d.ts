@@ -30,6 +30,8 @@ declare global {
 
 		interface AppState {
 			token: string;
+			modal?: Modal | null;
+			actions?: Button[] | null;
 		}
 
 		interface Locals {
