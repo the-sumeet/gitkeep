@@ -1,7 +1,10 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
+
 	let { avatar }: { avatar: string | null } = $props();
 	let accountDropdownOpened = $state(false);
 	let mobileMenuOpened = $state(false);
+	import { appState } from '$lib/store.svelte';
 </script>
 
 <nav class="bg-gray-800">
@@ -58,11 +61,7 @@
 					</button>
 				</div>
 				<div class="flex shrink-0 items-center">
-					<img
-						class="h-8 w-auto"
-						src="/images/logo.svg"
-						alt="Your Company"
-					/>
+					<img class="h-8 w-auto" src="/images/logo.svg" alt="Your Company" />
 				</div>
 				<div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
 					<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -79,27 +78,14 @@
 				</div>
 			</div>
 			<div class="flex items-center">
-				<div class="shrink-0">
-					<button
-						type="button"
-						class="relative inline-flex items-center gap-x-1.5 rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-					>
-						<svg
-							class="-ml-0.5 size-5"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-							data-slot="icon"
-						>
-							<path
-								d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"
-							/>
-						</svg>
-						New Note
-					</button>
-				</div>
+				{#if appState.actions}
+					<div class="shrink-0">
+						{#each appState.actions as action}
+							<Button text={action.text} onclick={action.onclick} type={action.type} />
+						{/each}
+					</div>
+				{/if}
 				<div class="hidden md:ml-4 md:flex md:shrink-0 md:items-center">
-					
 					<!-- Notification -->
 					<!-- <button
 						type="button"
@@ -199,11 +185,11 @@
 	</div>
 
 	<!-- Mobile menu, show/hide based on menu state. -->
-	 {#if mobileMenuOpened}
-	<div class="md:hidden" id="mobile-menu">
-		<div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-			<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-			<!-- <a
+	{#if mobileMenuOpened}
+		<div class="md:hidden" id="mobile-menu">
+			<div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+				<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+				<!-- <a
 				href="#"
 				class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
 				aria-current="page">Dashboard</a
@@ -213,26 +199,21 @@
 				class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
 				>Team</a
 			> -->
-		</div>
-		<div class="border-t border-gray-700 pb-3 pt-4">
-			<div class="flex items-center px-5 sm:px-6">
-				<!-- Account -->
-				<div onclick={accountDropdownOpened = !accountDropdownOpened} class="shrink-0">
-					{#if avatar}
-					<img
-						class="size-10 rounded-full"
-						src={avatar}
-						alt=""
-					/>
-					{/if}
-					
-				</div>
-				<div class="ml-3">
-					<div class="text-base font-medium text-white">Tom Cook</div>
-					<div class="text-sm font-medium text-gray-400">tom@example.com</div>
-				</div>
-				<!-- View notifications -->
-				<!-- <button
+			</div>
+			<div class="border-t border-gray-700 pb-3 pt-4">
+				<div class="flex items-center px-5 sm:px-6">
+					<!-- Account -->
+					<div onclick={(accountDropdownOpened = !accountDropdownOpened)} class="shrink-0">
+						{#if avatar}
+							<img class="size-10 rounded-full" src={avatar} alt="" />
+						{/if}
+					</div>
+					<div class="ml-3">
+						<div class="text-base font-medium text-white">Tom Cook</div>
+						<div class="text-sm font-medium text-gray-400">tom@example.com</div>
+					</div>
+					<!-- View notifications -->
+					<!-- <button
 					type="button"
 					class="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
 				>
@@ -254,27 +235,27 @@
 						/>
 					</svg>
 				</button> -->
-			</div>
-			{#if accountDropdownOpened}
-				<div class="mt-3 space-y-1 px-2 sm:px-3">
-					<a
-						href="#"
-						class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-						>Your Profile</a
-					>
-					<a
-						href="#"
-						class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-						>Settings</a
-					>
-					<a
-						href="#"
-						class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-						>Sign out</a
-					>
 				</div>
-			{/if}
+				{#if accountDropdownOpened}
+					<div class="mt-3 space-y-1 px-2 sm:px-3">
+						<a
+							href="#"
+							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+							>Your Profile</a
+						>
+						<a
+							href="#"
+							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+							>Settings</a
+						>
+						<a
+							href="#"
+							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+							>Sign out</a
+						>
+					</div>
+				{/if}
+			</div>
 		</div>
-	</div>
 	{/if}
 </nav>
