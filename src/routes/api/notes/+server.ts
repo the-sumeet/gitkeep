@@ -38,7 +38,7 @@ export async function PUT({locals, url, request}) {
             sha: sha
         });
         return json({ response });
-    } catch (error: any) {
+    } catch (error) {
         if (error.status == 404) {
             return json({ "error": `Path '${path}' in repository '${userSession!.repo}' not found for user '${userSession?.login}'`}, { status: 404 });
         } else {
