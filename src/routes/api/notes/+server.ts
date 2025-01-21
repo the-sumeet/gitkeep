@@ -30,7 +30,7 @@ export async function PUT({locals, url, request}) {
     try {
         console.log(`Updating ${path} in repository ${userSession!.repo} for user ${userSession?.login} with sha ${sha} and content ${content}`);
         const response = await octokit.rest.repos.createOrUpdateFileContents({
-            owner: userSession?.login!,
+            owner: userSession!.login!,
             repo: userSession!.repo,
             path,
             message: `Create or update ${path}`,
@@ -46,5 +46,28 @@ export async function PUT({locals, url, request}) {
             return json({ "error": `Path '${path}' in repository '${userSession!.repo}' not found for user '${userSession?.login}'`}, { status: 500 });
         }
     }
+}
 
+export async function DELETE({locals, url}) {
+
+    const userSession = (locals as App.Locals).session;
+    const path = url.searchParams.get('path') || "";
+    const sha = url.searchParams.get('sha') || "";
+
+    const token = userSession!.token;
+    const octokit = new Octokit({ auth: token });
+
+    try {
+        console.debug(`Deleting ${path} in repository ${userSession!.repo} for user ${userSession?.login} with sha ${sha}`);
+        const response = await octokit.rest.repos.deleteFile({
+            owner: userSession!.login!,
+            repo: userSession!.repo,
+            path,
+            message: `Delete ${path}`,
+            sha
+        });
+        return json({ response });
+    } catch (error) {
+        return json({"error": error.message}, {status: error.status});
+    }
 }
