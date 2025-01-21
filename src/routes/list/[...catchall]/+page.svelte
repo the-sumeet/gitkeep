@@ -5,7 +5,7 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import { page } from '$app/state';
 	import EasyMDE from 'easymde';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { appState } from '$lib/store.svelte';
 
 	interface Props {
@@ -83,18 +83,17 @@
 	});
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	async function deleteFile(path: string) {
-		if (selectedFile) {
-			const res = await fetch(selectedFile.url, {
-				method: 'DELETE',
-				headers: {
-					Authorization: `token ${localStorage.getItem('token')}`
-				}
-			});
-			if (res.ok) {
-				selectedFile = null;
-				invalidateAll();
+	async function deleteFile(path: string, sha: string) {
+		console.debug(`Deleting '${path}'`);
+		const res = await fetch(`/api/notes?path=${path}&sha=${'sha'}`, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `token ${localStorage.getItem('token')}`
 			}
+		});
+		if (res.ok) {
+			selectedFile = null;
+			invalidateAll();
 		}
 	}
 
@@ -228,6 +227,10 @@
 									<!-- Delete -->
 									<!-- svelte-ignore a11y_consider_explicit_label -->
 									<button
+										onclick={async (e) => {
+											e.stopPropagation();
+											await deleteFile(file.path, file.sha);
+										}}
 										type="button"
 										class="px-2 rounded-full p-1 text-gray-900 hover:bg-indigo-100 hover:text-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 									>
