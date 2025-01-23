@@ -94,6 +94,13 @@
 		if (res.ok) {
 			selectedFile = null;
 			invalidateAll();
+		} else {
+			appState.notification = {
+				type: "error",
+				title: `Could not delete note '${path}'`,
+
+				timeoutSeconds:5
+			}
 		}
 	}
 
