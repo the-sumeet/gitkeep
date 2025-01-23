@@ -256,6 +256,17 @@
 									>
 										<i class="text-md bi bi-trash"></i>
 									</button>
+
+									<!-- Delete -->
+									<!-- svelte-ignore a11y_consider_explicit_label -->
+									<a
+										href={file.html_url}
+										onclick={(e) => e.stopPropagation()}
+										target="_blank"
+										class="px-2 rounded-full p-1 text-gray-900 hover:bg-indigo-100 hover:text-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+									>
+									<i class="text-md bi bi-github"></i>
+									</a>
 								</div>
 							</div>
 						</div>
