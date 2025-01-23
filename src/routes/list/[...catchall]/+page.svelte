@@ -95,11 +95,12 @@
 			selectedFile = null;
 			invalidateAll();
 		} else {
+			const errorMessage = await res.json();
 			appState.notification = {
 				type: "error",
 				title: `Could not delete note '${path}'`,
-
-				timeoutSeconds:5
+				message: `Status: ${res.status}. ${errorMessage.error}.`,
+				timeoutSeconds: 5
 			}
 		}
 	}
