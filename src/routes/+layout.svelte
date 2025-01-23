@@ -7,6 +7,7 @@
 	import 'bootstrap-icons/font/bootstrap-icons.css';
 	import Modal from '$lib/components/Modal.svelte';
 	import { appState } from '$lib/store.svelte';
+	import Notification from '$lib/components/Notification.svelte';
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 	// svelte-ignore non_reactive_update
 	let avatar: string | null;
@@ -27,6 +28,10 @@
 			{@render children()}
 		</div>
 
+		{#if appState.notification}
+		<Notification {...appState.notification} />
+		{/if}
+		
 		{#if appState.modal}
 			<Modal
 				title={appState.modal.title}
