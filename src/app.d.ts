@@ -28,10 +28,23 @@ declare global {
 			session?: Session;
 		};
 
+		type Notification = {
+			type?: "success" | "error" | "warning" | "info";
+			title: string;
+			message?: string;
+			primaryButtonTitle?: string;
+			onPrimary?: () => void
+			secondaryButtonTitle?: string;
+			onSecondary?: () => void;
+			timeoutSeconds?: number;
+
+		}
+
 		interface AppState {
 			token: string;
 			modal?: Modal | null;
 			actions?: Button[] | null;
+			notification?: Notification
 		}
 
 		interface Locals {
