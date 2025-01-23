@@ -109,6 +109,18 @@
 		goto(`/list/${dir}`);
 	}
 
+	function sortFiles(files: Array<any>) {
+		return files.sort((a, b) => {
+			if (a.type === 'dir' && b.type === 'file') {
+				return -1;
+			}
+			if (a.type === 'file' && b.type === 'dir') {
+				return 1;
+			}
+			return a.name.localeCompare(b.name);
+		});
+	}
+
 	function getBreadcrumbDirs() {
 		if (page.url.pathname === '/list') {
 			return [];
@@ -187,7 +199,7 @@
 			</div>
 			<div class="mt-2 flex flex-wrap max-w-4xl md:px-16 mx-auto gap-y-2">
 				{#if data.files instanceof Array}
-					{#each data.files as file}
+					{#each sortFiles(data.files) as file}
 						<div class="group p-1 w-full sm:w-1/2 md:w-1/3 overflow-hidden">
 							<!-- Card with shadow -->
 							<!-- Be sure to use this with a layout container that is full-width on mobile -->
