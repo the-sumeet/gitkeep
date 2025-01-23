@@ -10,6 +10,7 @@
 	let intervalMs = timeoutMs / 1000;
 	let interval: NodeJS.Timeout;
 
+
 	function removeNotification() {
 		if (interval) {
 			clearInterval(interval);
@@ -23,6 +24,7 @@
 	    } else {
 			removeNotification();
 		}
+
 	}, intervalMs);
 
 	onDestroy(() => {
@@ -103,7 +105,7 @@ To: "opacity-0"
 			</div>
 
 			{#if data.type == "success"}
-				<hr class="border-b-4 border-green-400" style="width: 100%;" />
+				<hr class="border-b-4 border-green-400" style="width: {loadedPercent}%;" />
 			{:else if data.type == "error"}
 				<hr class="border-b-4 border-red-400" style="width: {loadedPercent}%;" />
 			{/if}
