@@ -97,11 +97,11 @@
 		} else {
 			const errorMessage = await res.json();
 			appState.notification = {
-				type: "error",
+				type: 'error',
 				title: `Could not delete note '${path}'`,
 				message: `Status: ${res.status}. ${errorMessage.error}.`,
 				timeoutSeconds: 5
-			}
+			};
 		}
 	}
 
@@ -265,7 +265,7 @@
 										target="_blank"
 										class="px-2 rounded-full p-1 text-gray-900 hover:bg-indigo-100 hover:text-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 									>
-									<i class="text-md bi bi-github"></i>
+										<i class="text-md bi bi-github"></i>
 									</a>
 								</div>
 							</div>
@@ -280,7 +280,7 @@
 			<div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
 			<div
-				class="flex flex-col justify-center fixed inset-0 z-10 w-screen h-screen overflow-y-hidden"
+				class="flex flex-col justify-center fixed inset-0 z-5 w-screen h-screen overflow-y-hidden"
 			>
 				<!-- <div class="z-10 top-0 bottom-0 absolute grow flex flex-col flex-auto w-full"> -->
 				<div
