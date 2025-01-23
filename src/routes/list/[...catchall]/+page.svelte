@@ -57,6 +57,11 @@
 								selectedFile.sha
 							).then(() => {
 								// selectedFile = null;
+								appState.notification = {
+									type: 'success',
+									title: `Note '${selectedFile.path}' saved`,
+									timeoutSeconds: 1
+								};
 								invalidateAll();
 							});
 						},
