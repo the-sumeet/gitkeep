@@ -23,7 +23,6 @@ export const getContent = async (fetch: any, path: string)=> {
 }
 
 export const putContent = async (fetch: any, path: string, content: string, sha: string | null) => {
-    console.log(`Updating ${path}  with sha ${sha} and content ${content}`);
     const response = await fetch(`/api/notes?path=${path}`, {
         method: 'PUT',
         headers: {
@@ -31,11 +30,7 @@ export const putContent = async (fetch: any, path: string, content: string, sha:
         },
         body: JSON.stringify({ content, sha })
     });
-    if (response.ok) {
-        console.log('putContent success');
-    } else if (response.status === 404) {
-        console.log('putContent 404');
-    }
+    return response;
 }
 
 export const b64DecodeUnicode = (str: string) => {
