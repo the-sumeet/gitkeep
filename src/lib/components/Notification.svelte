@@ -60,7 +60,7 @@ To: "opacity-0"
 						</div>
 					{:else if data.type == 'error'}
 						<div class="shrink-0">
-							<i class="text-xl text-red-400 bi bi-check-circle"></i>
+							<i class="text-xl text-red-400 bi bi-exclamation-triangle"></i>
 						</div>
 					{/if}
 
