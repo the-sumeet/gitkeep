@@ -15,19 +15,22 @@ export const load: PageLoad = async ({ url, fetch, parent }) => {
             redirect(302, '/repository');
         }
     }
-    
+
     const pathContent = await getContent(fetch, path);
 
     if (pathContent.status === 404) {
         const backPath = path.split('/').slice(0, -1).join('/');
-        if (browser) {
-            goto(`/list${backPath}`);
-        } else {
-            redirect(302, `/list${backPath}`);
+        if (backPath !== "") {
+            if (browser) {
+                goto(`/list${backPath}`);
+            } else {
+                redirect(302, `/list${backPath}`);
 
+            }
         }
+
     }
-    
+
     return {
         ...pathContent,
         path
