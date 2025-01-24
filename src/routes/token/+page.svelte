@@ -3,9 +3,6 @@
 	import { goto } from '$app/navigation';
 	let inputToken = $state('');
 
-	let user: App.GitHubUser | null = $state(null);
-	let repositories: App.Repositories = $state([]);
-
 	let error = $state('');
 	let fetching = $state(false);
 
