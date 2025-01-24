@@ -3,9 +3,11 @@
 
 export const getContent = async (fetch: any, path: string)=> {
     let error: string | null = null;
+    let status;
     let files: App.RepoContent = [];
     const response = await fetch(`/api/notes?path=${path}`);
     const data = await response.json();
+    status = response.status;
     if (response.ok) {
         files = data.files;
     } else if (response.status === 404) {
@@ -14,7 +16,8 @@ export const getContent = async (fetch: any, path: string)=> {
 
     return {
         error,
-        files
+        files,
+        status
     };
 
 }
