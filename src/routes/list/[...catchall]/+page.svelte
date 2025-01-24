@@ -16,6 +16,7 @@
 
 	let newNotesPath = '';
 	let { data }: { data: Props } = $props();
+
 	let editorContent = '';
 	let selectedFile: any | null = $state(null);
 	$effect(() => {
@@ -55,14 +56,24 @@
 								selectedFile.path,
 								b64EncodeUnicode(editorContent),
 								selectedFile.sha
-							).then(() => {
-								// selectedFile = null;
-								appState.notification = {
-									type: 'success',
-									title: `Note '${selectedFile.path}' saved`,
-									timeoutSeconds: 1
-								};
-								invalidateAll();
+							).then((response) => {
+								if (response.ok) {
+									// selectedFile = null;
+									appState.notification = {
+										type: 'success',
+										title: `Note '${selectedFile.path}' saved`,
+										timeoutSeconds: 1
+									};
+									invalidateAll();
+								} else {
+									const errorMessage = response.json();
+									appState.notification = {
+										type: 'error',
+										title: `Could not save note '${selectedFile.path}'`,
+										message: `Status: ${response.status}. ${errorMessage.error}.`,
+										timeoutSeconds: 5
+									};
+								}
 							});
 						},
 						className: 'bi bi-floppy',
@@ -173,9 +184,20 @@
 							{
 								text: 'Create',
 								onclick: async () => {
-									putContent(fetch, newNotesPath, b64EncodeUnicode(''), null).then(() => {
-										invalidateAll();
+									putContent(fetch, newNotesPath, b64EncodeUnicode(''), null).then(async (response) => {
 										appState.modal = null;
+										if (response.ok) {
+											invalidateAll();
+										} else {
+
+											const errorMessage = await response.json();
+											appState.notification = {
+												type: 'error',
+												title: `Could not create note '${newNotesPath}'`,
+												message: `Status: ${response.status}. ${errorMessage.error}.`,
+												timeoutSeconds: 5
+											};
+										}
 									});
 								},
 								type: 'primary'
@@ -303,5 +325,5 @@
 {/if}
 
 <svelte:head>
-    <title>{selectedFile ? selectedFile.path : "MarkBook"}</title> 
+	<title>{selectedFile ? selectedFile.path : 'MarkBook'}</title>
 </svelte:head>
