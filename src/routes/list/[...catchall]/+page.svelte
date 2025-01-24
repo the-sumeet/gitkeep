@@ -5,7 +5,7 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import { page } from '$app/state';
 	import EasyMDE from 'easymde';
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { appState } from '$lib/store.svelte';
 
 	interface Props {
@@ -297,3 +297,7 @@
 		{/if}
 	</div>
 {/if}
+
+<svelte:head>
+    <title>{selectedFile ? selectedFile.path : "MarkBook"}</title> 
+</svelte:head>

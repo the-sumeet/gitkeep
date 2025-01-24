@@ -43,3 +43,8 @@
 		{/if}
 	</div>
 {/if}
+
+
+<svelte:head>
+    <title>MarkBook</title> 
+</svelte:head>
