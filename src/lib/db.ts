@@ -20,7 +20,7 @@ export async function connectToDb() {
     }
 }
 
-export default client.db()
+export default client.db(MONGODB_NAME)
 
 export const parseObjId = (record: any) => {
     if (record && record._id) {
