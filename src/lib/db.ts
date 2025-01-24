@@ -1,8 +1,7 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import { MONGODB_URI } from '$env/static/private';
 import { MONGODB_NAME } from './constants';
 
-const client = new MongoClient(process.env.MONGODB_URI || MONGODB_URI, {
+const client = new MongoClient(process.env.MONGODB_URI || "", {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
