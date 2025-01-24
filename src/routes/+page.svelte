@@ -158,7 +158,7 @@
 							class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4"
 						>
 							<img
-								src="https://tailwindui.com/plus/img/component-images/project-app-screenshot.png"
+								src="screenshot.png"
 								alt="App screenshot"
 								width="2432"
 								height="1442"
@@ -302,8 +302,8 @@
 							OpenSource
 						</dt>
 						<dd class="mt-2 text-base/7 text-gray-600">
-							Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales
-							gravida quam turpis enim lacus amet.
+							Source code is available on GitHub. You can host your own instance or contribute to
+							the project.
 						</dd>
 					</div>
 					<div class="relative pl-16">
@@ -338,8 +338,7 @@
 							Markdown Support
 						</dt>
 						<dd class="mt-2 text-base/7 text-gray-600">
-							Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor
-							congue commodo diam neque.
+							No new proprietary format. Just write in Markdown and sync with GitHub.
 						</dd>
 					</div>
 					<div class="relative pl-16">
@@ -366,8 +365,7 @@
 							Free
 						</dt>
 						<dd class="mt-2 text-base/7 text-gray-600">
-							Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id
-							hac maecenas ac donec pharetra eget.
+							No hidden charges. No subscription. No ads. Just use it. 
 						</dd>
 					</div>
 				</dl>
