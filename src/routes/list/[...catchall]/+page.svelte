@@ -154,12 +154,16 @@
 			{
 				text: 'New Note',
 				onclick: () => {
+					let newNotesDir = data.path.replace('/', '');
+					if (newNotesDir) {
+						newNotesDir += '/';
+					}
 					appState.modal = {
 						title: 'Add New Note',
 						input: {
 							error: '',
 							label: 'File Name',
-							input: data.path.replace('/', ''),
+							input: newNotesDir,
 							type: 'text',
 							onchange: (e) => {
 								newNotesPath = e.target.value;
