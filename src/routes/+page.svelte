@@ -140,7 +140,7 @@
 							Simplest Markdown Notes App
 						</h1>
 						<p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-							Minimal GitHub based note taking app
+							GitHub as storage, Markdown based, open-source note taking app
 						</p>
 						<div class="mt-10 flex items-center justify-center gap-x-6">
 							<a
