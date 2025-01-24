@@ -90,7 +90,7 @@
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	async function deleteFile(path: string, sha: string) {
 		console.debug(`Deleting '${path}'`);
-		const res = await fetch(`/api/notes?path=${path}&sha=${'sha'}`, {
+		const res = await fetch(`/api/notes?path=${path}&sha=${sha}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `token ${localStorage.getItem('token')}`
