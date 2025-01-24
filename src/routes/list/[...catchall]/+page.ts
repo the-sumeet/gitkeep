@@ -25,7 +25,6 @@ export const load: PageLoad = async ({ url, fetch, parent }) => {
                 goto(`/list${backPath}`);
             } else {
                 redirect(302, `/list${backPath}`);
-
             }
         }
 
