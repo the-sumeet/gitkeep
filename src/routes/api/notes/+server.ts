@@ -39,12 +39,7 @@ export async function PUT({locals, url, request}) {
         });
         return json({ response });
     } catch (error) {
-        if (error.status == 404) {
-            return json({ "error": `Path '${path}' in repository '${userSession!.repo}' not found for user '${userSession?.login}'`}, { status: 404 });
-        } else {
-            console.error(`Error fetching repository ${'notes'} for user ${userSession?.login}: ${error}`);
-            return json({ "error": `Path '${path}' in repository '${userSession!.repo}' not found for user '${userSession?.login}'`}, { status: 500 });
-        }
+        return json({"error": error.message}, {status: error.status});
     }
 }
 
