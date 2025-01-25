@@ -278,6 +278,7 @@
 								<div class="hidden group-hover:flex">
 									<!-- Delete -->
 									<!-- svelte-ignore a11y_consider_explicit_label -->
+									{#if file.type === 'file'}
 									<button
 										onclick={async (e) => {
 											e.stopPropagation();
@@ -288,6 +289,7 @@
 									>
 										<i class="text-md bi bi-trash"></i>
 									</button>
+									{/if}
 
 									<!-- Delete -->
 									<!-- svelte-ignore a11y_consider_explicit_label -->
