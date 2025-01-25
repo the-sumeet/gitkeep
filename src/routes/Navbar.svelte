@@ -2,7 +2,9 @@
 	import { goto } from '$app/navigation';
 	import Button from '$lib/components/Button.svelte';
 
-	let { avatar }: { avatar: string | null } = $props();
+	let { session }: { session: App.Session | null } = $props();
+	console.log(session);
+
 	let accountDropdownOpened = $state(false);
 	let mobileMenuOpened = $state(false);
 	import { appState } from '$lib/store.svelte';
@@ -133,7 +135,7 @@
 								onclick={() => (accountDropdownOpened = !accountDropdownOpened)}
 								type="button"
 								class="relative flex rounded-full bg-gray-800 text-sm
-								{/* This is because I'm not able to get icon in full cirlce and hence the ring was being in ellipse shape */ avatar
+								{/* This is because I'm not able to get icon in full cirlce and hence the ring was being in ellipse shape */ (session)
 									? 'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
 									: ''}"
 								id="user-menu-button"
@@ -142,8 +144,8 @@
 							>
 								<span class="absolute -inset-1.5"></span>
 								<span class="sr-only">Open user menu</span>
-								{#if avatar}
-									<img class="size-8 rounded-full" src={avatar} alt="" />
+								{#if session}
+									<img class="size-8 rounded-full" src={session.avatar_url} alt="" />
 								{:else}
 									<div class="rounded-full">
 										<i class=" text-gray-400 p-1 text-2xl bi bi-person-circle"></i>
@@ -205,15 +207,19 @@
 			<div class="border-t border-gray-700 pb-3 pt-4">
 				<div class="flex items-center px-5 sm:px-6">
 					<!-- Account -->
-					<div onclick={(accountDropdownOpened = !accountDropdownOpened)} class="shrink-0">
-						{#if avatar}
-							<img class="size-10 rounded-full" src={avatar} alt="" />
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div onclick={() => accountDropdownOpened = !accountDropdownOpened} class="shrink-0">
+						{#if session}
+							<img class="size-10 rounded-full" src={session.avatar_url} alt="" />
 						{/if}
 					</div>
+					{#if session}
 					<div class="ml-3">
-						<div class="text-base font-medium text-white">Tom Cook</div>
-						<div class="text-sm font-medium text-gray-400">tom@example.com</div>
+						<div class="text-base font-medium text-white">{session.login}</div>
+						<!-- <div class="text-sm font-medium text-gray-400">{session.email}</div> -->
 					</div>
+					{/if}
 					<!-- View notifications -->
 					<!-- <button
 					type="button"
@@ -240,16 +246,6 @@
 				</div>
 				{#if accountDropdownOpened}
 					<div class="mt-3 space-y-1 px-2 sm:px-3">
-						<a
-							href="#"
-							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-							>Your Profile</a
-						>
-						<a
-							href="#"
-							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-							>Settings</a
-						>
 						<button
 							onclick={logOut}
 							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"

@@ -10,18 +10,15 @@
 	import Notification from '$lib/components/Notification.svelte';
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 	// svelte-ignore non_reactive_update
-	let avatar: string | null;
+
 	let session = data.session;
-	if (session) {
-		avatar = session.avatar_url;
-	}
 </script>
 
 {#if page.url.pathname === '/'}
 	{@render children()}
 {:else}
 	<div class="relative z-10 h-screen flex flex-col">
-		<Navbar {avatar} />
+		<Navbar {session} />
 
 		<div class="flex-1 flex overflow-y-hidden">
 			<!-- <Sidebar /> -->
