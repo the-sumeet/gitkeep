@@ -1,10 +1,26 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Button from '$lib/components/Button.svelte';
 
 	let { avatar }: { avatar: string | null } = $props();
 	let accountDropdownOpened = $state(false);
 	let mobileMenuOpened = $state(false);
 	import { appState } from '$lib/store.svelte';
+
+	function logOut() {
+
+		fetch('/api/logout', {
+			method: 'POST'
+		})
+			.then((res) => {
+				if (res.ok) {
+					goto('/');
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}
 </script>
 
 <nav class="bg-gray-800">
@@ -155,12 +171,12 @@
 								tabindex="-1"
 							>
 								<!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-								<a
-									href="#"
+								<button
+									onclick={logOut}
 									class="block px-4 py-2 text-sm text-gray-700"
 									role="menuitem"
 									tabindex="-1"
-									id="user-menu-item-2">Sign out</a
+									id="user-menu-item-2">Sign out</button
 								>
 							</div>
 						{/if}
@@ -234,10 +250,10 @@
 							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
 							>Settings</a
 						>
-						<a
-							href="#"
+						<button
+							onclick={logOut}
 							class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-							>Sign out</a
+							>Sign out</button
 						>
 					</div>
 				{/if}

@@ -184,21 +184,22 @@
 							{
 								text: 'Create',
 								onclick: async () => {
-									putContent(fetch, newNotesPath, b64EncodeUnicode(''), null).then(async (response) => {
-										appState.modal = null;
-										if (response.ok) {
-											invalidateAll();
-										} else {
-
-											const errorMessage = await response.json();
-											appState.notification = {
-												type: 'error',
-												title: `Could not create note '${newNotesPath}'`,
-												message: `Status: ${response.status}. ${errorMessage.error}.`,
-												timeoutSeconds: 5
-											};
+									putContent(fetch, newNotesPath, b64EncodeUnicode(''), null).then(
+										async (response) => {
+											appState.modal = null;
+											if (response.ok) {
+												invalidateAll();
+											} else {
+												const errorMessage = await response.json();
+												appState.notification = {
+													type: 'error',
+													title: `Could not create note '${newNotesPath}'`,
+													message: `Status: ${response.status}. ${errorMessage.error}.`,
+													timeoutSeconds: 5
+												};
+											}
 										}
-									});
+									);
 								},
 								type: 'primary'
 							},
