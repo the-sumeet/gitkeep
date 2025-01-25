@@ -220,7 +220,7 @@
 </script>
 
 {#if data}
-	<div class="relative overflow-y-scroll flex-1 mt-2">
+	<div class="relative overflow-y-scroll flex-1 mt-2 px-4 sm:px-2">
 		{#if data.error}
 			<div class="p-2">
 				<Alert title={data.error} type={'error'} />
@@ -232,7 +232,7 @@
 			<div class="mt-2 flex flex-wrap max-w-4xl md:px-16 mx-auto gap-y-2">
 				{#if data.files instanceof Array}
 					{#each sortFiles(data.files) as file}
-						<div class="group p-1 w-full sm:w-1/2 md:w-1/3 overflow-hidden">
+						<div class="group sm:p-1 w-full sm:w-1/2 md:w-1/3 overflow-hidden">
 							<!-- Card with shadow -->
 							<!-- Be sure to use this with a layout container that is full-width on mobile -->
 							<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -245,7 +245,7 @@
 										selectedFile = file;
 									}
 								}}
-								class="p-3 py-2 h-64 bg-white border transition-shadow duration-300 hover:shadow-md sm:rounded-lg text-sm flex flex-col justify-between"
+								class="p-3 py-2 h-64 bg-white border transition-shadow duration-300 hover:shadow-md rounded-md text-sm flex flex-col justify-between"
 							>
 								<div class="overflow-y-hidden">
 									<!-- Card title -->
