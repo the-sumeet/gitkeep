@@ -939,7 +939,7 @@
 			<!--				</a>-->
 			<!--			</div>-->
 			<p class="mt-8 text-center text-sm/6 text-gray-600 md:order-1 md:mt-0">
-				&copy; 2024 GitKeep, Inc. All rights reserved.
+				&copy; 2025 MarkBook, Inc. All rights reserved.
 			</p>
 		</div>
 	</footer>

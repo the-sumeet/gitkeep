@@ -1,4 +1,4 @@
-# GitKeep
+# Markbook
 
 A markdown note taking app with GitHub for storage.
 
