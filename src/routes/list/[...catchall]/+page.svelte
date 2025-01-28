@@ -283,16 +283,16 @@
 									<!-- Delete -->
 									<!-- svelte-ignore a11y_consider_explicit_label -->
 									{#if file.type === 'file'}
-									<button
-										onclick={async (e) => {
-											e.stopPropagation();
-											await deleteFile(file.path, file.sha);
-										}}
-										type="button"
-										class="px-2 rounded-full p-1 text-gray-900 hover:bg-indigo-100 hover:text-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-									>
-										<i class="text-md bi bi-trash"></i>
-									</button>
+										<button
+											onclick={async (e) => {
+												e.stopPropagation();
+												await deleteFile(file.path, file.sha);
+											}}
+											type="button"
+											class="px-2 rounded-full p-1 text-gray-900 hover:bg-indigo-100 hover:text-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+										>
+											<i class="text-md bi bi-trash"></i>
+										</button>
 									{/if}
 
 									<!-- Delete -->

@@ -1,3 +1,3 @@
-import db from "./db"
+import db from './db';
 
-export const sessions = db.collection<App.Session>('sessions')
+export const sessions = db.collection<App.Session>('sessions');

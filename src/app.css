@@ -2,23 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .EasyMDEContainer {
-    height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
+	height: 100% !important;
+	display: flex !important;
+	flex-direction: column !important;
 }
 
 .CodeMirror {
-    flex: 1 1 0% !important;
+	flex: 1 1 0% !important;
 }
 
 .EasyMDEContainer .CodeMirror {
-    border: none !important;
+	border: none !important;
 }
 
 .editor-toolbar {
-    border: none;
-    border-bottom: 1px solid #ced4da;
+	border: none;
+	border-bottom: 1px solid #ced4da;
 }

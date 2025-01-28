@@ -26,9 +26,9 @@
 		</div>
 
 		{#if appState.notification}
-		<Notification {...appState.notification} />
+			<Notification {...appState.notification} />
 		{/if}
-		
+
 		{#if appState.modal}
 			<Modal
 				title={appState.modal.title}
@@ -41,7 +41,6 @@
 	</div>
 {/if}
 
-
 <svelte:head>
-    <title>MarkBook</title> 
+	<title>MarkBook</title>
 </svelte:head>

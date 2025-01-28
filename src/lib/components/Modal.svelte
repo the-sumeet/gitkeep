@@ -67,7 +67,13 @@
 
 					{#if input}
 						<div class="mt-4 text-start">
-							<Input input={input.input} onchange={input.onchange} error={input.error} label={input.label} type={input.type} />
+							<Input
+								input={input.input}
+								onchange={input.onchange}
+								error={input.error}
+								label={input.label}
+								type={input.type}
+							/>
 						</div>
 					{/if}
 				</div>

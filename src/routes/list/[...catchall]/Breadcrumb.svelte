@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	type PropType = {
 		paths: string[];
 	};
@@ -8,11 +7,10 @@
 	function getPathRoute(index: number) {
 		return '/list/' + paths.slice(0, index + 1).join('/');
 	}
-
 </script>
 
 <nav class="border rounded-md p-2 shadow-md flex items-center" aria-label="Breadcrumb">
-	<ol role="list" class="flex flex-wrap items-center space-x-4 ">
+	<ol role="list" class="flex flex-wrap items-center space-x-4">
 		<li>
 			<div>
 				<a href="/list" class="text-gray-400 hover:text-gray-500">
@@ -29,8 +27,10 @@
 						{#if i === paths.length - 1}
 							<span class="ml-4 text-sm font-medium text-gray-500">{path}</span>
 						{:else}
-						<a href={getPathRoute(i)} class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">{path}</a
-						>
+							<a
+								href={getPathRoute(i)}
+								class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">{path}</a
+							>
 						{/if}
 					</div>
 				</li>

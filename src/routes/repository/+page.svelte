@@ -20,7 +20,7 @@
 			body: JSON.stringify({ repo: selectedRepoName })
 		}).then((res) => {
 			if (res.ok) {
-				goto('/list', {invalidateAll: true});
+				goto('/list', { invalidateAll: true });
 			} else if (res.status == 401) {
 				goto('/token');
 			}

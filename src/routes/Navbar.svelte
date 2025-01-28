@@ -10,7 +10,6 @@
 	import { appState } from '$lib/store.svelte';
 
 	function logOut() {
-
 		fetch('/api/logout', {
 			method: 'POST'
 		})
@@ -136,7 +135,7 @@
 								onclick={() => (accountDropdownOpened = !accountDropdownOpened)}
 								type="button"
 								class="relative flex rounded-full bg-gray-800 text-sm
-								{/* This is because I'm not able to get icon in full cirlce and hence the ring was being in ellipse shape */ (session)
+								{/* This is because I'm not able to get icon in full cirlce and hence the ring was being in ellipse shape */ session
 									? 'focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
 									: ''}"
 								id="user-menu-button"
@@ -210,16 +209,16 @@
 					<!-- Account -->
 					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
-					<div onclick={() => accountDropdownOpened = !accountDropdownOpened} class="shrink-0">
+					<div onclick={() => (accountDropdownOpened = !accountDropdownOpened)} class="shrink-0">
 						{#if session}
 							<img class="size-10 rounded-full" src={session.avatar_url} alt="" />
 						{/if}
 					</div>
 					{#if session}
-					<div class="ml-3">
-						<div class="text-base font-medium text-white">{session.login}</div>
-						<!-- <div class="text-sm font-medium text-gray-400">{session.email}</div> -->
-					</div>
+						<div class="ml-3">
+							<div class="text-base font-medium text-white">{session.login}</div>
+							<!-- <div class="text-sm font-medium text-gray-400">{session.email}</div> -->
+						</div>
 					{/if}
 					<!-- View notifications -->
 					<!-- <button

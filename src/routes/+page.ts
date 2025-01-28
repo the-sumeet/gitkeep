@@ -1,10 +1,7 @@
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({parent}) => {
+export const load: PageLoad = async ({ parent }) => {
+	const { session } = (await parent()) as App.ParentData;
 
-    const { session } = await parent() as App.ParentData;
-
-    return {};
-
-
-}
+	return {};
+};

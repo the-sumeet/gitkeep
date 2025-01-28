@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { appState } from "$lib/store.svelte";
-	import { onDestroy } from "svelte";
+	import { appState } from '$lib/store.svelte';
+	import { onDestroy } from 'svelte';
 
 	let data: App.Notification = $props();
 
@@ -10,7 +10,6 @@
 	let intervalMs = timeoutMs / 1000;
 	let interval: NodeJS.Timeout;
 
-
 	function removeNotification() {
 		if (interval) {
 			clearInterval(interval);
@@ -19,18 +18,16 @@
 	}
 
 	interval = setInterval(() => {
-	    if ((loadedPercent - 0.1) > 0) {
-	        loadedPercent -= 0.1;
-	    } else {
+		if (loadedPercent - 0.1 > 0) {
+			loadedPercent -= 0.1;
+		} else {
 			removeNotification();
 		}
-
 	}, intervalMs);
 
 	onDestroy(() => {
 		removeNotification();
 	});
-	
 </script>
 
 <!-- Global notification live region, render this permanently at the end of the document -->
@@ -104,9 +101,9 @@ To: "opacity-0"
 				</div>
 			</div>
 
-			{#if data.type == "success"}
+			{#if data.type == 'success'}
 				<hr class="border-b-4 border-green-400" style="width: {loadedPercent}%;" />
-			{:else if data.type == "error"}
+			{:else if data.type == 'error'}
 				<hr class="border-b-4 border-red-400" style="width: {loadedPercent}%;" />
 			{/if}
 		</div>

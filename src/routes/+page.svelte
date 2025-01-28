@@ -36,12 +36,12 @@
 					</svg>
 				</button>
 			</div>
-<!--			<div class="hidden lg:flex lg:gap-x-12">-->
-<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Product</a>-->
-<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Features</a>-->
-<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>-->
-<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>-->
-<!--			</div>-->
+			<!--			<div class="hidden lg:flex lg:gap-x-12">-->
+			<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Product</a>-->
+			<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Features</a>-->
+			<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>-->
+			<!--				<a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>-->
+			<!--			</div>-->
 			<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 				<a href="/token" class="text-sm/6 font-semibold text-gray-900"
 					>Log in <span aria-hidden="true">&rarr;</span></a
@@ -83,28 +83,28 @@
 					</div>
 					<div class="mt-6 flow-root">
 						<div class="-my-6 divide-y divide-gray-500/10">
-<!--							<div class="space-y-2 py-6">-->
-<!--								<a-->
-<!--									href="#"-->
-<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
-<!--									>Product</a-->
-<!--								>-->
-<!--								<a-->
-<!--									href="#"-->
-<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
-<!--									>Features</a-->
-<!--								>-->
-<!--								<a-->
-<!--									href="#"-->
-<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
-<!--									>Marketplace</a-->
-<!--								>-->
-<!--								<a-->
-<!--									href="#"-->
-<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
-<!--									>Company</a-->
-<!--								>-->
-<!--							</div>-->
+							<!--							<div class="space-y-2 py-6">-->
+							<!--								<a-->
+							<!--									href="#"-->
+							<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
+							<!--									>Product</a-->
+							<!--								>-->
+							<!--								<a-->
+							<!--									href="#"-->
+							<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
+							<!--									>Features</a-->
+							<!--								>-->
+							<!--								<a-->
+							<!--									href="#"-->
+							<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
+							<!--									>Marketplace</a-->
+							<!--								>-->
+							<!--								<a-->
+							<!--									href="#"-->
+							<!--									class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"-->
+							<!--									>Company</a-->
+							<!--								>-->
+							<!--							</div>-->
 							<div class="py-6">
 								<a
 									href="/token"
@@ -148,9 +148,9 @@
 								class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 								>Log In</a
 							>
-<!--							<a href="#" class="text-sm/6 font-semibold text-gray-900"-->
-<!--								>Learn more <span aria-hidden="true">→</span></a-->
-<!--							>-->
+							<!--							<a href="#" class="text-sm/6 font-semibold text-gray-900"-->
+							<!--								>Learn more <span aria-hidden="true">→</span></a-->
+							<!--							>-->
 						</div>
 					</div>
 					<div class="mt-16 flow-root sm:mt-24">
@@ -238,7 +238,7 @@
 		<!-- Feature section -->
 		<div class="mx-auto 16 max-w-7xl px-6 sm:32 lg:px-8">
 			<div class="mx-auto max-w-2xl lg:text-center">
-<!--				<h2 class="text-base/7 font-semibold text-indigo-600">Deploy faster</h2>-->
+				<!--				<h2 class="text-base/7 font-semibold text-indigo-600">Deploy faster</h2>-->
 				<p
 					class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-balance"
 				>
@@ -365,7 +365,7 @@
 							Free
 						</dt>
 						<dd class="mt-2 text-base/7 text-gray-600">
-							No hidden charges. No subscription. No ads. Just use it. 
+							No hidden charges. No subscription. No ads. Just use it.
 						</dd>
 					</div>
 				</dl>
