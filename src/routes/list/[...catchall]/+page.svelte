@@ -141,7 +141,8 @@
 		if (page.url.pathname === '/list') {
 			return [];
 		}
-		return page.url.pathname.replace('/list/', '').split('/');
+
+		return decodeURIComponent(page.url.pathname).replace('/list/', '').split('/');
 	}
 
 	async function getFileContent(file: any) {
