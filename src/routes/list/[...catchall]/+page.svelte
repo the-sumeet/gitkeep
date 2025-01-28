@@ -64,6 +64,9 @@
 										title: `Note '${selectedFile.path}' saved`,
 										timeoutSeconds: 1
 									};
+									// I'm closing the editor becuase I don't know, don't have time to
+									// figure out how to update the sha of the previously saved file.
+									selectedFile = null;
 									invalidateAll();
 								} else {
 									const errorMessage = response.json();
