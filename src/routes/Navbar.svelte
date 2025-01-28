@@ -16,6 +16,7 @@
 		})
 			.then((res) => {
 				if (res.ok) {
+					localStorage.clear();
 					goto('/');
 				}
 			})
