@@ -56,18 +56,20 @@
 }
 
 .editor-preview ul {
-	@apply list-disc pl-2;
+	@apply list-disc pl-2 list-inside;
+}
+
+
+.editor-preview ol {
+	@apply list-decimal pl-2 list-inside;
 }
 
 .editor-preview img {
 	@apply mx-auto max-w-full;
 }
 
-.editor-preview ol {
-	@apply list-decimal pl-2;
-}
 .editor-preview blockquote {
-	@apply border-l-4 border-gray-300 pl-4;
+	@apply border-l-4 border-gray-300 pl-4 italic;
 }
 
 .editor-preview pre {
