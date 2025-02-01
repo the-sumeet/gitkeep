@@ -88,7 +88,8 @@
 							selectedFile = null;
 						},
 						className: 'text-red-700 font-bold bi bi-x-square',
-						title: 'Close'
+						title: 'Close',
+						noDisable: true
 					}
 				]
 			});
