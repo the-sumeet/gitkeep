@@ -134,6 +134,20 @@
 			<div class="py-24 sm:py-32 lg:pb-40">
 				<div class="mx-auto max-w-7xl px-6 lg:px-8">
 					<div class="mx-auto max-w-2xl text-center">
+						<div class="mx-auto flex justify-center w-full mb-4">
+							<a
+								href="https://www.producthunt.com/posts/markbook-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-markbook&#0045;2"
+								target="_blank"
+								><img
+									src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=827981&theme=light&t=1738384038212"
+									alt="MarkBook - Simplest&#0032;markdown&#0032;based&#0032;notes&#0032;app | Product Hunt"
+									style="width: 250px; height: 54px;"
+									width="250"
+									height="54"
+								/></a
+							>
+						</div>
+
 						<h1
 							class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl"
 						>

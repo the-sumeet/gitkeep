@@ -20,3 +20,56 @@
 	border: none;
 	border-bottom: 1px solid #ced4da;
 }
+
+/* Preview css */
+
+.editor-preview > * {
+	@apply mt-4 mb-6 w-full;
+}
+
+.editor-preview table {
+	@apply block overflow-x-auto;
+}
+
+.editor-preview h1 {
+	@apply font-bold text-4xl;
+}
+
+.editor-preview h2 {
+	@apply font-bold text-3xl;
+}
+
+.editor-preview h3 {
+	@apply font-bold text-2xl;
+}
+
+.editor-preview h4 {
+	@apply font-bold text-xl;
+}
+
+.editor-preview h5 {
+	@apply font-bold text-lg;
+}
+
+.editor-preview h6 {
+	@apply font-bold text-base;
+}
+
+.editor-preview ul {
+	@apply list-disc pl-2;
+}
+
+.editor-preview img {
+	@apply mx-auto max-w-full;
+}
+
+.editor-preview ol {
+	@apply list-decimal pl-2;
+}
+.editor-preview blockquote {
+	@apply border-l-4 border-gray-300 pl-4;
+}
+
+.editor-preview pre {
+	@apply bg-gray-100 p-4 rounded overflow-x-auto;
+}
